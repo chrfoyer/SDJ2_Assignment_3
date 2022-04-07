@@ -14,16 +14,16 @@ public class MyApplication extends Application
     {
 
       Model model = new ModelManager();
+      // The model is now responsible for creating the client object
 
       ViewModelFactory viewModelFactory = new ViewModelFactory(model);
       ViewHandler view = new ViewHandler(viewModelFactory);
 
+//      RmiClient rmiClient = new RmiClient();
+//      rmiClient.setUsername("BobTest");
+//      rmiClient.send("I'm locked in");
+
       view.start(primaryStage);
-
-
-      RmiClient rmiClient = new RmiClient();
-      rmiClient.setUsername("BobTest");
-      rmiClient.send("I'm locked in");
     }
     catch (Exception e)
     {

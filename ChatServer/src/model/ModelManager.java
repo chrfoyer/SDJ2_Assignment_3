@@ -11,6 +11,8 @@ public class ModelManager implements Model {
     private MessageList messageList;
     private int numberOfConnectedUsers;
 
+    // todo a local event fires here with the new message to add it to the list
+
     public ModelManager() {
         initializeChat();
     }

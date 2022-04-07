@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class MessageList implements Serializable
 {
+  // todo remove this class
   private ArrayList<Message> messages;
   private String key;
   private static Map<String, MessageList> map = new HashMap<>();
