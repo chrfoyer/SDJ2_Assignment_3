@@ -43,6 +43,7 @@ public class ModelManager implements Model {
         messageList.addMessage(message);
         property.firePropertyChange("NEW_MESSAGE", message,
                 message.getUserName());
+        System.out.println(message.toString());
     }
 
     @Override

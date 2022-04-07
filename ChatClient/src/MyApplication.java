@@ -12,7 +12,7 @@ public class MyApplication extends Application
   {
     try
     {
-      /*
+
       Model model = new ModelManager();
 
       ViewModelFactory viewModelFactory = new ViewModelFactory(model);
@@ -20,11 +20,10 @@ public class MyApplication extends Application
 
       view.start(primaryStage);
 
-       */
+
       RmiClient rmiClient = new RmiClient();
       rmiClient.setUsername("BobTest");
       rmiClient.send("I'm locked in");
-      // client.execute();
     }
     catch (Exception e)
     {

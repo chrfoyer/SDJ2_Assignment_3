@@ -1,6 +1,7 @@
 package mediator;
 
 import model.Message;
+import utility.observer.listener.RemoteListener;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

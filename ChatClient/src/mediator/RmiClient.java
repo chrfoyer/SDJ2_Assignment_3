@@ -5,12 +5,14 @@ import mediator.RemoteSender;
 import model.Message;
 import model.Model;
 import model.ModelManager;
+import utility.observer.event.ObserverEvent;
+import utility.observer.listener.RemoteListener;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class RmiClient implements RemoteSender
+public class RmiClient implements RemoteSender, RemoteListener
 {
   private RemoteModel server;
   private Model model;
@@ -43,6 +45,12 @@ public class RmiClient implements RemoteSender
 
   public void setUsername(String username) {
     model.setUsername(username);
+  }
+
+  @Override public void propertyChange(ObserverEvent event)
+      throws RemoteException
+  {
+
   }
 }
 

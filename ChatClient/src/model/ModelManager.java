@@ -35,7 +35,8 @@ public class ModelManager implements Model
   @Override
   public void sendMessage(Message message) {
     messageList.addMessage(message);
-    property.firePropertyChange("SEND_MESSAGE", message, username);
+    //property.firePropertyChange("SEND_MESSAGE", message, username);
+    System.out.println(message.toString());
   }
 
   @Override public void addMessage(Message message)
