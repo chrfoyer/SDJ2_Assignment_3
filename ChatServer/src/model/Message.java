@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Message
+public class Message implements Serializable
 {
   private String userName;
   private LocalDateTime timeStamp;
@@ -27,5 +28,9 @@ public class Message
   public String getMessage()
   {
     return message;
+  }
+
+  public String toString() {
+    return userName + "> " + message;
   }
 }

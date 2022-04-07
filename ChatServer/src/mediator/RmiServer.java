@@ -2,6 +2,10 @@ package mediator;
 
 import mediator.RemoteModel;
 import mediator.RemoteSender;
+import model.Message;
+import model.MessageList;
+import model.Model;
+import model.ModelManager;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -12,10 +16,12 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 public class RmiServer implements RemoteModel
 {
-  private ArrayList<String> messageList;
+  private Model model;
+  private MessageList messageList;
 
   public RmiServer() throws RemoteException, MalformedURLException {
-    messageList = new ArrayList<>();
+    model = new ModelManager();
+    messageList = model.getAllMessagesForDay("7");
     startServer();
   }
 
@@ -41,12 +47,12 @@ public class RmiServer implements RemoteModel
 
 
 
-  @Override public void addMessage(String message, RemoteSender sender)
+  @Override public void addMessage(Message message, RemoteSender sender)
       throws RemoteException
   {
-    messageList.add(message);
+    messageList.addMessage(message);
     System.out.println(message);
-    sender.replyMessage("Thank You");
+    sender.replyMessage(message);
   }
 }
 

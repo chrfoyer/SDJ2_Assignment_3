@@ -22,7 +22,8 @@ public class MyApplication extends Application
 
        */
       RmiClient rmiClient = new RmiClient();
-      rmiClient.send("Dicks");
+      rmiClient.setUsername("BobTest");
+      rmiClient.send("I'm locked in");
       // client.execute();
     }
     catch (Exception e)

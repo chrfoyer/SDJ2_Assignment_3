@@ -2,12 +2,13 @@ package model;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MessageList
+public class MessageList implements Serializable
 {
   private ArrayList<Message> messages;
   private String key;
