@@ -14,8 +14,7 @@ public class RmiServer implements RemoteModel
 {
   private ArrayList<String> messageList;
 
-  public RmiServer() throws RemoteException
-  {
+  public RmiServer() throws RemoteException, MalformedURLException {
     messageList = new ArrayList<>();
     startServer();
   }
@@ -32,8 +31,10 @@ public class RmiServer implements RemoteModel
     }
   }
 
-  private void startServer() throws RemoteException{
+  private void startServer() throws RemoteException, MalformedURLException {
     startRegistry();
+    UnicastRemoteObject.exportObject(this, 0);
+    Naming.rebind("Case", this);
     System.out.println("server started...");
   }
 

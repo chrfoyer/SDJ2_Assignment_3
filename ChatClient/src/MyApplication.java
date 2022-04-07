@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
+import mediator.RmiClient;
 import model.Model;
 import model.ModelManager;
 import view.ViewHandler;
@@ -11,15 +12,17 @@ public class MyApplication extends Application
   {
     try
     {
+      /*
       Model model = new ModelManager();
 
       ViewModelFactory viewModelFactory = new ViewModelFactory(model);
       ViewHandler view = new ViewHandler(viewModelFactory);
 
       view.start(primaryStage);
-      ChatClient client = new ChatClient("localhost", 9876, model);
-      new Thread(client).start();
-      client.connect();
+
+       */
+      RmiClient rmiClient = new RmiClient();
+      rmiClient.send("Dicks");
       // client.execute();
     }
     catch (Exception e)
