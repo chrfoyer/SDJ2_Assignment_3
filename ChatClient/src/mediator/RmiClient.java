@@ -30,7 +30,7 @@ public class RmiClient implements RemoteListener<Message, Message>, UnnamedPrope
       server = (RemoteModel) Naming.lookup("rmi://localhost:1099/Case");
       UnicastRemoteObject.exportObject(this, 0);
       server.addListener(this);
-      Naming.rebind("Case", this);
+
       System.out.println("Stub pulled");
     }
     catch (Exception ex)
