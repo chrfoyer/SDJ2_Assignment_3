@@ -2,7 +2,9 @@ package model;
 
 import utility.observer.javaobserver.UnnamedPropertyChangeSubject;
 
-public interface Model extends UnnamedPropertyChangeSubject
+import java.beans.PropertyChangeListener;
+
+public interface Model extends UnnamedPropertyChangeSubject, PropertyChangeListener
 {
   public void setUsername(String userName);
 

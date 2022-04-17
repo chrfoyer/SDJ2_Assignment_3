@@ -1,12 +1,10 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
-import mediator.ChatClient;
+import mediator.RmiClient;
 import model.Model;
 import model.ModelManager;
 import view.ViewHandler;
 import viewmodel.ViewModelFactory;
-
-import java.io.IOException;
 
 public class MyApplication extends Application
 {
@@ -14,16 +12,18 @@ public class MyApplication extends Application
   {
     try
     {
+
       Model model = new ModelManager();
+      // The model is now responsible for creating the client object
 
       ViewModelFactory viewModelFactory = new ViewModelFactory(model);
       ViewHandler view = new ViewHandler(viewModelFactory);
 
+//      RmiClient rmiClient = new RmiClient();
+//      rmiClient.setUsername("BobTest");
+//      rmiClient.send("I'm locked in");
+
       view.start(primaryStage);
-      ChatClient client = new ChatClient("localhost", 9876, model);
-      new Thread(client).start();
-      client.connect();
-      // client.execute();
     }
     catch (Exception e)
     {

@@ -1,23 +1,28 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Message
+public class Message implements Serializable
 {
   private String userName;
   private LocalDateTime timeStamp;
   private String message;
 
-  public Message(String message, String userName)
-  {
+  public Message(String message, String userName){
     this.message = message;
     this.userName = userName;
     timeStamp = LocalDateTime.now();
   }
 
-  @Override public String toString()
+  public String getUserName()
   {
-    return userName + " -> " + message + " ["  + timeStamp.getHour() + ":" + timeStamp.getMinute() + ":" + timeStamp.getSecond() + "]";
+    return userName;
+  }
+
+  public LocalDateTime getTimeStamp()
+  {
+    return timeStamp;
   }
 
   public String getMessage()
@@ -25,7 +30,7 @@ public class Message
     return message;
   }
 
-  public String getUserName() {
-    return userName;
+  public String toString() {
+    return userName + "> " + message;
   }
 }
