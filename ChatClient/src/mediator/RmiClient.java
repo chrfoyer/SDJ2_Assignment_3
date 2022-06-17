@@ -15,7 +15,7 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class RmiClient implements RemoteListener<Message, Message>, UnnamedPropertyChangeSubject
+public class RmiClient implements RemoteListener<Message, Message>, UnnamedPropertyChangeSubject, RemoteSender
 {
   private RemoteModel server;
   private Model model;
@@ -41,7 +41,7 @@ public class RmiClient implements RemoteListener<Message, Message>, UnnamedPrope
 
   public void send(Message message) throws RemoteException
   {
-    server.addMessage(message);
+    server.addMessage(message, this);
   }
 
   public void setUsername(String username) {
@@ -64,6 +64,12 @@ public class RmiClient implements RemoteListener<Message, Message>, UnnamedPrope
   @Override
   public void removeListener(PropertyChangeListener listener) {
     property.removePropertyChangeListener(listener);
+  }
+
+  @Override
+  public void replyMessage(Message message) throws RemoteException
+  {
+    System.out.println("Message sent: " + message);
   }
 }
 

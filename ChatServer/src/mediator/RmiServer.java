@@ -1,7 +1,5 @@
 package mediator;
 
-import mediator.RemoteModel;
-import mediator.RemoteSender;
 import model.Message;
 import model.MessageList;
 import model.Model;
@@ -15,7 +13,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
+
 public class RmiServer implements RemoteModel
 {
   private Model model;
@@ -45,18 +43,15 @@ public class RmiServer implements RemoteModel
     startRegistry();
     UnicastRemoteObject.exportObject(this, 0);
     Naming.rebind("Case", this);
-    // todo use Singleton to free up stub access for multiple clients
     System.out.println("server started...");
   }
 
-
-
-
-  @Override public void addMessage(Message message)
+  @Override public void addMessage(Message message, RemoteSender remoteSender)
       throws RemoteException
   {
     messageList.addMessage(message);
-    System.out.println(message);;
+    System.out.println(message);
+    remoteSender.replyMessage(message);
     property.firePropertyChange("Spoke", null, message);
   }
 

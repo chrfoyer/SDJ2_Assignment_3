@@ -12,8 +12,6 @@ import java.util.ArrayList;
 
 public class ModelManager implements Model
 {
-  // todo make this a listener for the client so that it can be more independent from the mediator package
-
   private PropertyChangeSupport property = new PropertyChangeSupport(this);
   private String username;
   private MessageList messageList;

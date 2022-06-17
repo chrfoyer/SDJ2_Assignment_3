@@ -9,5 +9,5 @@ import java.rmi.RemoteException;
 
 public interface RemoteSender extends Remote
 {
- // public void replyMessage(Message message) throws RemoteException;
+    void replyMessage(Message message) throws RemoteException;
 }
